@@ -25,6 +25,7 @@
 button {
     padding: 10px 20px;
     margin-bottom: 5px;
+    margin-right: 10px;
     background-color: rgb(37, 185, 230);
     color: white;
     font-size: 15px;
@@ -37,4 +38,8 @@ button {
 
 button:active {
     box-shadow: none;
+}
+
+img#github-logo{
+    vertical-align: middle;
 }
