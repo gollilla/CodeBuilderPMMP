@@ -108,7 +108,18 @@
 
         function codeTo() {
             let code = Blockly.PHP.workspaceToCode(workspace);
-            code = "<?php\n" + code;
+            code = "<?php\n"
+                + "namespace test\\test;\n\n"
+                + "use pocketmine\\event\\player\\{\n"
+                + "                PlayerJoinEvent,\n"
+                + "                PlayerMoveEvent,\n"
+                + "                PlayerQuitEvent};\n\n"
+                + "class Main extends PluginBase implements Listener {\n\n"
+                + "    public function onEnable(){\n"
+                + "        $this->getServer()->getPluginManager()->registerEvents($this, $this);\n"
+                + "    }\n"
+                + "\n"
+                + code;
             editor.setValue(code);
             editor.getSelection().clearSelection();
         }
