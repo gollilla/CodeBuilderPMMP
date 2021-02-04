@@ -118,8 +118,10 @@
                 + "    public function onEnable(){\n"
                 + "        $this->getServer()->getPluginManager()->registerEvents($this, $this);\n"
                 + "    }\n"
-                + "}\n"
+                + "\n"
                 + code;
+            code = code
+                + "}\n";
             editor.setValue(code);
             editor.getSelection().clearSelection();
         }
