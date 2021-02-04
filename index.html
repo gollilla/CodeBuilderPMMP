@@ -12,7 +12,7 @@
     <div class="link-to-github"><img id="github-logo" src="./GitHub-Mark-32px.png"> To GitHub</div>
     <div class="container">
         <div id="editor"></div>
-        <textarea id="code"></textarea>
+        <div id="code"></div>
     </div>
 
     <div class="toolbox-area"></div>
@@ -62,6 +62,8 @@
     </xml>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ext-language_tools.min.js"></script>
     <script src="./blockly_compressed.js"></script>
     <script src="./blocks_compressed.js"></script>
     <script src="./javascript_compressed.js"></script>
@@ -71,6 +73,7 @@
     <script src="./msg/js/ja.js"></script>
     <script>
         let workspace;
+        let editor;
         $(function () {
             $(".toolbox-area").load("./toolbox.xml", (data, status, obj) => {
                 workspace = Blockly.inject('editor', {
@@ -85,6 +88,18 @@
                 });
                 Blockly.Xml.domToWorkspace(document.getElementById('examples'), workspace);
             });
+
+            editor = ace.edit("code");
+            editor.$blockScrolling = Infinity;
+            editor.setOptions({
+                enableBasicAutocompletion: true,
+                enableSnippets: true,
+                enableLiveAutocompletion: true
+            });
+            editor.setTheme("ace/theme/monokai");
+            editor.getSession().setMode("ace/mode/php");
+            editor.setFontSize(20);
+            editor.setShowPrintMargin(false);
         });
 
         $(".link-to-github").click(() => {
@@ -93,8 +108,12 @@
 
         function codeTo() {
             let code = Blockly.PHP.workspaceToCode(workspace);
-            $("#code").val(code);
+            code = "<?php\n" + code;
+            editor.setValue(code);
+            editor.getSelection().clearSelection();
         }
+
+
 
     </script>
 </body>

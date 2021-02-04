@@ -6,15 +6,9 @@
 
 #code {
     height: 100%;
-    width: 45%;
+    width: 49%;
     display: inline-block;
     vertical-align: top;
-    border: 2px solid rgb(59, 136, 236);
-    background-color: rgb(25, 70, 100);
-    color: white;
-    font-size: 20px;
-    overflow-x: scroll;
-    font-weight: bold;
 }
 
 .container {
