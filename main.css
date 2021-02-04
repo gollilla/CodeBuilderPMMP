@@ -1,0 +1,40 @@
+#editor {
+    height: 100vh;
+    width: 50%;
+    display: inline-block;
+}
+
+#code {
+    height: 50%;
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid rgb(59, 136, 236);
+    background-color: rgb(25, 70, 100);
+    color: white;
+    font-size: 20px;
+    overflow-x: scroll;
+    font-weight: bold;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    background-color: rgb(37, 185, 230);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1.5px rgb(147, 155, 160);
+    outline: none;
+}
+
+button:active {
+    box-shadow: none;
+}

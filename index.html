@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="./main.css" />
+    <title>PMMP CodeBuilder</title>
+</head>
+
+<body>
+    <button onclick="codeTo()">コード表示</button>
+    <div class="container">
+        <div id="editor"></div>
+        <textarea id="code"></textarea>
+    </div>
+
+    <div class="toolbox-area"></div>
+
+    <xml id="examples" xmlns="https://developers.google.com/blockly/xml" style="display: none;">
+        <variables>
+            <variable id="Qoy:zatDMHB@w~RDRoU{">event</variable>
+            <variable id="/ZSCYbn_M{E|@1=6Mg]v">player</variable>
+        </variables>
+        <block type="eventhandler" id="E0|ie+O+xm4Ide{k]4vz" x="40" y="35">
+            <field name="eventList">PlayerJoinEvent</field>
+            <field name="event" id="Qoy:zatDMHB@w~RDRoU{">event</field>
+            <statement name="doing">
+                <block type="variables_set" id="LVcJyZKX%K7Pf(]N95Xw">
+                    <field name="VAR" id="/ZSCYbn_M{E|@1=6Mg]v">player</field>
+                    <value name="VALUE">
+                        <block type="getter" id="L-`buAh1}Er]g#+ad?)s">
+                            <value name="objects">
+                                <block type="variables_get" id="D{r0G5?iYZ%fGo9YOxKI">
+                                    <field name="VAR" id="Qoy:zatDMHB@w~RDRoU{">event</field>
+                                </block>
+                            </value>
+                            <value name="value">
+                                <block type="text" id="ut?@i(kJiDGv*]CB*mzv">
+                                    <field name="TEXT">Player</field>
+                                </block>
+                            </value>
+                        </block>
+                    </value>
+                    <next>
+                        <block type="sendmessage" id="26I/7YBnJ|$+9^35-{eK">
+                            <value name="value">
+                                <block type="variables_get" id="0G;lc(5?HFF1^8j|B:t7">
+                                    <field name="VAR" id="/ZSCYbn_M{E|@1=6Mg]v">player</field>
+                                </block>
+                            </value>
+                            <value name="message">
+                                <block type="text" id="0[}P@H$JN!i5^O2?~md3">
+                                    <field name="TEXT">こんにちは</field>
+                                </block>
+                            </value>
+                        </block>
+                    </next>
+                </block>
+            </statement>
+        </block>
+    </xml>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./blockly_compressed.js"></script>
+    <script src="./blocks_compressed.js"></script>
+    <script src="./javascript_compressed.js"></script>
+    <script src="./php_compressed.js"></script>
+    <script src="./pmmp_blocks.js"></script>
+    <script src="./pmmp_code_gen.js"></script>
+    <script src="./msg/js/ja.js"></script>
+    <script>
+        let workspace;
+        $(function () {
+            $(".toolbox-area").load("./toolbox.xml", (data, status, obj) => {
+                workspace = Blockly.inject('editor', {
+                    toolbox: document.getElementById("toolbox"), maxBlocks: Infinity, trashcan: true, zoom: {
+                        controls: true,
+                        wheel: false,
+                        startScale: 1,
+                        maxScale: 3,
+                        minScale: 0.3,
+                        scaleSpeed: 1.2
+                    }
+                });
+                Blockly.Xml.domToWorkspace(document.getElementById('examples'), workspace);
+            });
+        });
+
+
+
+        function codeTo() {
+            let code = Blockly.PHP.workspaceToCode(workspace);
+            $("#code").val(code);
+        }
+
+    </script>
+</body>
+
+</html>
