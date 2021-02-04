@@ -9,8 +9,7 @@
 
 <body>
     <button onclick="codeTo()">コード表示</button>
-    <a href="https://github.com/gollilla/CodeBuilderPMMP" target="_blank"><img id="github-logo"
-            src="./GitHub-Mark-32px.png"></a>
+    <div class="link-to-github"><img id="github-logo" src="./GitHub-Mark-32px.png"> To GitHub</div>
     <div class="container">
         <div id="editor"></div>
         <textarea id="code"></textarea>
@@ -88,7 +87,9 @@
             });
         });
 
-
+        $(".link-to-github").click(() => {
+            window.open("https://github.com/gollilla/CodeBuilderPMMP", "_blank");
+        });
 
         function codeTo() {
             let code = Blockly.PHP.workspaceToCode(workspace);

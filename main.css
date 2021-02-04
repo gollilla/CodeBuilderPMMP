@@ -40,6 +40,8 @@ button:active {
     box-shadow: none;
 }
 
-img#github-logo{
+.link-to-github {
+    cursor: pointer;
+    display: inline-block;
     vertical-align: middle;
 }
