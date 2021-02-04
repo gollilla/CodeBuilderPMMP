@@ -94,7 +94,8 @@
             editor.setOptions({
                 enableBasicAutocompletion: true,
                 enableSnippets: true,
-                enableLiveAutocompletion: true
+                enableLiveAutocompletion: true,
+                enableAutoIndent: true
             });
             editor.setTheme("ace/theme/monokai");
             editor.getSession().setMode("ace/mode/php");
@@ -113,7 +114,8 @@
                 + "use pocketmine\\event\\player\\{\n"
                 + "                PlayerJoinEvent,\n"
                 + "                PlayerMoveEvent,\n"
-                + "                PlayerQuitEvent};\n\n"
+                + "                PlayerQuitEvent\n"
+                + "};\n\n"
                 + "class Main extends PluginBase implements Listener {\n\n"
                 + "    public function onEnable(){\n"
                 + "        $this->getServer()->getPluginManager()->registerEvents($this, $this);\n"
@@ -124,6 +126,10 @@
                 + "}\n";
             editor.setValue(code);
             editor.getSelection().clearSelection();
+            setTimeout(() => {
+                editor.autoIndent();
+            }, 10);
+
         }
 
 
