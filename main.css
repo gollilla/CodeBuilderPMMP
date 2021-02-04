@@ -1,3 +1,4 @@
+
 #editor {
     height: 100%;
     width: 50%;
@@ -38,4 +39,22 @@ button:active {
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
+}
+
+@media screen and (max-width: 1024px){
+
+    #editor {
+        height: 50%;
+        width: 100%;
+    }
+
+    #code {
+        height: 50%;
+        width: 100%;
+    }
+
+    .container {
+        height: 100%;
+        width: 100%;
+    }
 }
