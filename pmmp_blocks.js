@@ -6,7 +6,7 @@ Blockly.Blocks['eventhandler'] = {
       .appendField(new Blockly.FieldVariable("event"), "event");
     this.appendStatementInput("doing")
       .setCheck(null);
-    this.setColour(330);
+    this.setColour("#f9d06f");
     this.setTooltip("");
     this.setHelpUrl("");
   }
@@ -23,7 +23,7 @@ Blockly.Blocks['getter'] = {
     this.appendDummyInput()
       .appendField("を取得");
     this.setOutput(true, null);
-    this.setColour(195);
+    this.setColour("#00bcd4");
     this.setTooltip("");
     this.setHelpUrl("");
   }

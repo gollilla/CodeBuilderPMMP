@@ -1,11 +1,11 @@
 #editor {
-    height: 100vh;
+    height: 100%;
     width: 50%;
     display: inline-block;
 }
 
 #code {
-    height: 50%;
+    height: 100%;
     width: 45%;
     display: inline-block;
     vertical-align: top;
@@ -18,7 +18,7 @@
 }
 
 .container {
-    height: 100%;
+    height: calc(100vh - 80px);
     width: 100%;
 }
 
