@@ -77,7 +77,7 @@
         $(function () {
             $(".toolbox-area").load("./toolbox.xml", (data, status, obj) => {
                 workspace = Blockly.inject('editor', {
-                    toolbox: document.getElementById("toolbox"), maxBlocks: Infinity, trashcan: true, zoom: {
+                    toolbox: document.getElementById("toolbox"), maxBlocks: Infinity, sounds: false, trashcan: true, zoom: {
                         controls: true,
                         wheel: false,
                         startScale: 1,
