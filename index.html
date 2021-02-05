@@ -96,8 +96,8 @@
                     }
                 });
                 workspace.addChangeListener((e) => {
-                    if (e.type !== Blockly.Events.BLOCK_MOVE && e.type !== Blockly.Events.CLICK && e.type !== Blockly.Events.SELECTD) {
-                        console.log(e.type);
+                    if (e.type !== Blockly.Events.BLOCK_MOVE && e.type !== Blockly.Events.CLICK && e.type !== Blockly.Events.SELECTD && e.type !== Blockly.Events.VIEWPORT_CHANGE) {
+                        //console.log(e.type);
                         codeTo();
                     }
                 });
