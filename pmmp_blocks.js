@@ -36,13 +36,18 @@ Blockly.Blocks['sendmessage'] = {
     this.appendDummyInput()
       .appendField("に");
     this.appendValueInput("message")
-      .setCheck("String");
+      .setCheck(null);
     this.appendDummyInput()
-      .appendField("と送る");
+      .appendField("という");
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldDropdown([["メッセージ", "Message"], ["Tip", "Tip"], ["Popup", "Popup"], ["Form", "Form"]]), "send_type");
+    this.appendDummyInput()
+      .appendField("を送る");
+    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(300);
-    this.setTooltip("");
+    this.setColour(15);
+    this.setTooltip("いろいろおくります");
     this.setHelpUrl("");
   }
 };
