@@ -40,7 +40,7 @@ Blockly.Blocks['sendmessage'] = {
     this.appendDummyInput()
       .appendField("という");
     this.appendDummyInput()
-      .appendField(new Blockly.FieldDropdown([["メッセージ", "Message"], ["Tip", "Tip"], ["Popup", "Popup"], ["Form", "Form"]]), "send_type");
+      .appendField(new Blockly.FieldDropdown([["メッセージ", "sendMessage"], ["Tip", "sendTip"], ["Popup", "sendPopup"], ["Form", "sendForm"], ["全体放送メッセージ", "broadcastMessage"], ["全体放送Tip", "broadcastTip"], ["全体放送Popup", "broadcastPoup"]]), "send_type");
     this.appendDummyInput()
       .appendField("を送る");
     this.setInputsInline(true);
@@ -48,6 +48,17 @@ Blockly.Blocks['sendmessage'] = {
     this.setNextStatement(true, null);
     this.setColour(15);
     this.setTooltip("いろいろおくります");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['server_instance'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("サーバー");
+    this.setOutput(true, null);
+    this.setColour(330);
+    this.setTooltip("サーバーインスタンス");
     this.setHelpUrl("");
   }
 };

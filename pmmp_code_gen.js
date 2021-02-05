@@ -7,6 +7,7 @@ Blockly.PHP['eventhandler'] = function (block) {
   code = code + statements_doing + '\n}\n';
   return code;
 };
+
 Blockly.PHP['getter'] = function (block) {
   var value_object = Blockly.PHP.valueToCode(block, 'objects', Blockly.PHP.ORDER_ATOMIC);
   var value_value = Blockly.PHP.valueToCode(block, 'value', Blockly.PHP.ORDER_ATOMIC);
@@ -30,8 +31,15 @@ Blockly.PHP['sendmessage'] = function (block) {
   var value_message = Blockly.PHP.valueToCode(block, 'message', Blockly.PHP.ORDER_ATOMIC);
   var dropdown_send_type = block.getFieldValue('send_type'); //Message, Tip, Popup, Form
   // TODO: Assemble JavaScript into code variable.
-  var code = value_value + '->send' + dropdown_send_type.replace(/\'/g, "") + '(' + value_message + ');\n';
+  var code = value_value + '->' + dropdown_send_type.replace(/\'/g, "") + '(' + value_message + ');\n';
   return code;
+};
+
+Blockly.PHP['server_instance'] = function (block) {
+  // TODO: Assemble PHP into code variable.
+  var code = 'pocketmine\\Server::getInstance()';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.PHP.ORDER_NONE];
 };
 
 function getUniqueStr(myStrong) {

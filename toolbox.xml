@@ -6,6 +6,7 @@
             </block>
             <block type="getter"></block>
             <block type="sendmessage"></block>
+            <block type="server_instance"></block>
         </category>
         <category name="文字" colour="#5ba58c">
             <block type="text">
