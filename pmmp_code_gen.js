@@ -8,8 +8,8 @@ Blockly.PHP['eventhandler'] = function (block) {
   return code;
 };
 Blockly.PHP['getter'] = function (block) {
-  var value_object = Blockly.PHP.valueToCode(block, 'objects', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_value = Blockly.PHP.valueToCode(block, 'value', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_object = Blockly.PHP.valueToCode(block, 'objects', Blockly.PHP.ORDER_ATOMIC);
+  var value_value = Blockly.PHP.valueToCode(block, 'value', Blockly.PHP.ORDER_ATOMIC);
   value_value = value_value.replace(/\'/g, "");
   // TODO: Assemble JavaScript into code variable.
   var code = value_object + '->get' + value_value + '()';
@@ -17,11 +17,20 @@ Blockly.PHP['getter'] = function (block) {
   return [code, Blockly.PHP.ORDER_NONE];
 };
 
-Blockly.PHP['sendmessage'] = function (block) {
+/*Blockly.PHP['sendmessage'] = function (block) {
   var value_value = Blockly.PHP.valueToCode(block, 'value', Blockly.PHP.ORDER_ATOMIC);
   var value_message = Blockly.PHP.valueToCode(block, 'message', Blockly.PHP.ORDER_ATOMIC);
   // TODO: Assemble PHP into code variable.
   var code = value_value + '->sendMessage(' + value_message + ');\n';
+  return code;
+};*/
+
+Blockly.PHP['sendmessage'] = function (block) {
+  var value_value = Blockly.PHP.valueToCode(block, 'value', Blockly.PHP.ORDER_ATOMIC);
+  var value_message = Blockly.PHP.valueToCode(block, 'message', Blockly.PHP.ORDER_ATOMIC);
+  var dropdown_send_type = block.getFieldValue('send_type'); //Message, Tip, Popup, Form
+  // TODO: Assemble JavaScript into code variable.
+  var code = value_value + '->send' + dropdown_send_type.replace(/\'/g, "") + '(' + value_message + ');\n';
   return code;
 };
 
