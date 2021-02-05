@@ -37,7 +37,7 @@ Blockly.PHP['sendmessage'] = function (block) {
 
 Blockly.PHP['server_instance'] = function (block) {
   // TODO: Assemble PHP into code variable.
-  var code = 'pocketmine\\Server::getInstance()';
+  var code = '\\pocketmine\\Server::getInstance()';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.PHP.ORDER_NONE];
 };
