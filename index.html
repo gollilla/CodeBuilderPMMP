@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="./main.css?id=0001" />
+    <link rel="stylesheet" href="./main.css?id=0002" />
     <link rel="icon" href="./favicon.ico" />
     <title>CodeBuilderPMMP </title>
 
@@ -18,8 +18,17 @@
 </head>
 
 <body>
-    <!--<button onclick="codeTo()">コード表示</button>-->
+    <button onclick="codeTo()" id="compile_button">コード表示</button>
     <div class="link-to-github"><img id="github-logo" src="./GitHub-Mark-32px.png"> To GitHub</div>
+    <div class="auto-compile">
+        <span style="font-weight: bold;font-size: 10px;">自動コード変換</span>
+        <div class="switchArea" style="display: inline-block">
+            <input type="checkbox" id="switch1">
+            <label for="switch1"><span></span></label>
+            <div id="swImg"></div>
+        </div>
+    </div>
+
     <div class="container">
         <div id="editor"></div>
         <div id="code"></div>
@@ -84,6 +93,7 @@
     <script>
         let workspace;
         let editor;
+        let auto_compile_func;
         $(function () {
             $(".toolbox-area").load("./toolbox.xml", (data, status, obj) => {
                 workspace = Blockly.inject('editor', {
@@ -96,12 +106,22 @@
                         scaleSpeed: 1.2
                     }
                 });
-                workspace.addChangeListener((e) => {
+                auto_compile_func = (e) => {
                     if (e.type !== Blockly.Events.BLOCK_MOVE && e.type !== Blockly.Events.CLICK && e.type !== Blockly.Events.SELECTD && e.type !== Blockly.Events.VIEWPORT_CHANGE) {
                         //console.log(e.type);
                         codeTo();
                     }
-                });
+                };
+                $("#switch1").change(() => {
+                    if ($("#switch1").prop("checked")) { //自動変換 ON
+                        workspace.addChangeListener(auto_compile_func);
+                        codeTo();
+                        $("#compile_button").hide();
+                    } else {
+                        workspace.removeChangeListener(auto_compile_func);
+                        $("#compile_button").show();
+                    }
+                })
                 Blockly.Xml.domToWorkspace(document.getElementById('examples'), workspace);
             });
 
